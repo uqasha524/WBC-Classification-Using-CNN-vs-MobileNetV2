@@ -14,10 +14,10 @@ Our goal was to compare the performance, generalization ability, and efficiency 
 
 White blood cells (WBCs) are essential components of the human immune system. There are 5 primary types:
 - **Neutrophil** 🟠
-- **Eosinophil** 🔴
-- **Basophil** 🟣
+- **Eosinophil** 🟠
+- **Basophil** 🔵
 - **Monocyte** 🟤
-- **Lymphocyte** 🔵
+- **Lymphocyte** 🟣
 
 Accurate classification helps pathologists detect infections, allergies, leukemia, and other disorders.
 
@@ -116,16 +116,7 @@ for class_name, count in class_counts.items():
                     generated += 1
                     break
 ```
----
-.
-├── Dataset/                 # WBC image folders
-├── Model/                  # Trained Keras models (.h5 files)
-├── Notebook/
-│   └── code.ipynb          # Main training & evaluation code
-├── Image/
-│   └── main.png           
-└── README.md               # This file
----
+<pre lang="markdown"> ## 📁 Project Structure ``` . ├── Dataset/ # WBC image folders (Train, Test, Balanced_Train) ├── Model/ # Trained Keras models (.h5 files) ├── Notebook/ │ └── code.ipynb # Main training & evaluation code ├── Image/ │ └── main.png # Visualization (sample or architecture) └── README.md # This file ``` </pre>
 
 ## 🧠 Model Approaches
 
