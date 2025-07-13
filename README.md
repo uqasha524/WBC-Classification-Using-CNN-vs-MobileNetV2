@@ -116,8 +116,18 @@ for class_name, count in class_counts.items():
                     generated += 1
                     break
 ```
-<pre lang="markdown"> ## 📁 Project Structure ``` . ├── Dataset/ # WBC image folders (Train, Test, Balanced_Train) ├── Model/ # Trained Keras models (.h5 files) ├── Notebook/ │ └── code.ipynb # Main training & evaluation code ├── Image/ │ └── main.png # Visualization (sample or architecture) └── README.md # This file ``` </pre>
-
+Project Structure:
+```plaintext
+.
+├── Dataset/          # WBC image folders (Train, Test, Balanced_Train)
+├── Model/            # Trained Keras models (.h5 files)
+├── Notebook/
+│   └── code.ipynb    # Main training & evaluation code
+├── Image/
+│   └── main.png      # Visualization (sample or architecture)
+└── README.md         # This file
+```
+---
 ## 🧠 Model Approaches
 
 To classify white blood cell (WBC) types, we explored **two deep learning strategies**:
