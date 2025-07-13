@@ -124,8 +124,8 @@ Project Structure:
 ├── Notebook/
 │   └── code.ipynb    # Main training & evaluation code
 ├── Image/
-│   └── main.png      # Visualization (sample or architecture)
-└── README.md         # This file
+│   └── main.png     
+└── README.md         
 ```
 ---
 ## 🧠 Model Approaches
@@ -229,7 +229,7 @@ Pillow (PIL) – Image handling and preprocessing
 
 shutil, os, collections – File/directory manipulation
 
-MobileNetV2, EfficientNetB0 – Transfer learning models from keras.applications
+MobileNetV2 – Transfer learning models from keras.applications
 ```
 ## **Contact**
 Made with ❤️ by **Uqasha Zahid**
