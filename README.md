@@ -144,12 +144,13 @@ Project Structure:
 ---
 ## 🧠 Model Approaches
 
-To classify white blood cell (WBC) types, we explored **two deep learning strategies**:
+To classify white blood cell (WBC) types, we explored two deep learning strategies:
 
-1. **Custom CNN** – A convolutional neural network built from scratch, optimized for the structure of our dataset.
-2. **Transfer Learning with MobileNetV2** – A lightweight, pre-trained architecture used as a feature extractor to leverage learned representations from ImageNet.
+Custom CNN – A convolutional neural network built from scratch, tailored and optimized specifically for our WBC image dataset.
 
-Both models were trained and evaluated on a **balanced dataset** and compared based on accuracy and generalization performance.
+Transfer Learning – Leveraged multiple state-of-the-art pre-trained models including MobileNetV2, DenseNet, VGG16, and ViT_B16. These models, originally trained on the ImageNet dataset, were fine-tuned or used as feature extractors to improve classification performance.
+
+All models were trained and evaluated on a balanced dataset and compared based on their classification accuracy, efficiency, and ability to generalize to unseen data.
 
 ---
 
@@ -172,46 +173,28 @@ The custom CNN was designed specifically for image-based classification of white
 
 > ✅ Achieved **93% test accuracy** after training on the balanced dataset
 
-
-### 🤖 2. MobileNetV2 (Transfer Learning)
-
-We implemented a transfer learning approach using **MobileNetV2** as a feature extractor. The key components of the architecture include:
-
-- **Base Model**:  
-  - `MobileNetV2` (pre-trained on ImageNet)  
-  - `include_top=False` to remove the default classification layer  
-  - Input shape: `(224, 224, 3)`  
-  - Frozen weights to retain pretrained features
-
-- **Custom Classification Head**:
-  - `GlobalAveragePooling2D` to reduce spatial dimensions
-  - `Dense` layer with 16 units (`ReLU`)  
-  - `BatchNormalization` for stability
-  - Final `Dense` layer with 5 units (`softmax`) for 5 WBC classes
-
-- **Callbacks Used**:
-  - `EarlyStopping`: Stop training when validation performance stops improving  
-  - `ReduceLROnPlateau`: Lower learning rate on plateaus  
-  - `ModelCheckpoint`: Save only the best-performing model (`mobile_model_1.h5`)
-
-📉 Optimized using `AdamW` optimizer with `categorical_crossentropy` loss  
-✅ This model achieved **89% test accuracy** on unseen WBC images
-
 ### ⚠️ Transfer Learning: Not Always Superior
 
-While transfer learning with pretrained models like MobileNetV2 can be powerful, it's important to note:
+While transfer learning using pre-trained models such as MobileNetV2, DenseNet, VGG16, and ViT_B16 can be powerful, it's essential to consider their domain applicability:
 
-- These models are originally trained on **ImageNet**, which contains **general object categories**, not specialized domains like **white blood cells**.
-- If your dataset contains **very different features** compared to ImageNet classes, the **pretrained features may not generalize well**.
+These models are trained on ImageNet, a dataset containing general-purpose object categories—not specialized domains like microscopic white blood cell images.
 
-> ❗ In our case, despite using a sophisticated pretrained MobileNetV2 architecture, the **custom CNN outperformed it** with higher test accuracy (93% vs 89%).
+As a result, when the target dataset has domain-specific features, pre-trained representations may require extensive fine-tuning or may not generalize optimally.
 
-This highlights the importance of **experimenting with both custom and transfer learning models**, especially when working in specialized domains like **medical imaging**.
+To explore this, we compared a custom CNN model with several transfer learning architectures. The results are summarized below:
 
 | Model       | Test Accuracy | Generalization | Training Time |
 | ----------- | ------------- | -------------- | ------------- |
-| Custom CNN  | ✅ **93%**     | High           | Moderate      |
-| MobileNetV2 | ✅ 89%         | Medium         | Faster        |
+| Custom CNN  | ✅ 93%        | High           | Moderate      |
+| MobileNetV2 | ✅ 89%        | Medium         | Faster        |
+| DenseNet    | ✅ 84.44%     | Low            | Moderate      |
+| VGG16       | ✅ 94.65%     | High           | Slow          |
+| Vit B16     | ✅ **96.20%** | High           | Slower        |
+
+🔍 Despite initial expectations, our custom CNN outperformed some transfer learning models in terms of generalization and accuracy. However, ViT_B16 and VGG16 surpassed all models in test accuracy, albeit at the cost of longer training times.
+
+This highlights the importance of experimenting with both custom-built models and various transfer learning architectures, especially in medical imaging, where domain-specific patterns often require tailored solutions.
+
 
 ---
 
@@ -243,7 +226,6 @@ Pillow (PIL) – Image handling and preprocessing
 
 shutil, os, collections – File/directory manipulation
 
-MobileNetV2 – Transfer learning models from keras.applications
 ```
 ## **Contact**
 Made with ❤️ by **Uqasha Zahid**
