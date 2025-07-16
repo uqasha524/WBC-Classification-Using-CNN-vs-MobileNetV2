@@ -1,4 +1,4 @@
-# 🧬 WBC Classification Using CNN vs MobileNetV2
+# 🧬 WBC Classification Using CNN vs Transfer Leraning
 
 ## 📌 Project Overview
 
