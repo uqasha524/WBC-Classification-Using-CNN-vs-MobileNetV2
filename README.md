@@ -3,10 +3,12 @@
 ## 📌 Project Overview
 
 This project aims to classify human white blood cell (WBC) types using two different deep learning approaches:
-- A custom **Convolutional Neural Network (CNN)** model
-- A **Transfer Learning** model using **MobileNetV2**
 
-Our goal was to compare the performance, generalization ability, and efficiency of both approaches on a real-world microscopic blood smear image dataset.
+A custom-built Convolutional Neural Network (CNN) model
+
+Multiple Transfer Learning models based on DenseNet, MobileNetV2, VGG16, and Vision Transformer (ViT_B16)
+
+The objective is to compare the performance, generalization capability, and efficiency of traditional CNNs with advanced pre-trained architectures on a real-world microscopic blood smear image dataset.
 
 ---
 
@@ -120,9 +122,21 @@ Project Structure:
 ```plaintext
 .
 ├── Dataset/          # WBC image folders (Train, Test, Balanced_Train)
-├── Model/            # Trained Keras models (.h5 files)
+├── Model/            
+│   └── cnn_1.h5
+│   └── cnn_2.h5
+│   └── cnn_3.h5
+│   └── dense_freeze.h5
+│   └── dense_freeze_1.h5
+│   └── mobile_1.h5
+│   └── vgg16_freeze.keras
+│   └── ViT_B16.keras
 ├── Notebook/
-│   └── code.ipynb    # Main training & evaluation code
+│   └── CNN-Convolutional_Neural_Network.ipynb
+│   └── Dense_Net_Transfer_Learning.ipynb
+│   └── Mobile_Net_Transfer_Learning.ipynb
+│   └── VGG-16-transfer-learning.ipynb
+│   └── ViT_B16.ipynb
 ├── Image/
 │   └── main.png     
 └── README.md         
